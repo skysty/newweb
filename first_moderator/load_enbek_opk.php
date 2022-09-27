@@ -10,6 +10,7 @@
 		$FacultyID = $_POST['faculty'];
 		$cafedraID = $_POST['cafedra'];
 		$TutorID = $_POST['tutor'];
+		$id_tutor = $_POST['tutor_id'];
 		$sani = $_POST['sany'];
 		$ball = $_POST['ball'];
 	
@@ -40,7 +41,7 @@
 				$newfilename = $TutorID."_".round(time()) . '.' . end($temp);
 				move_uploaded_file($file_temp, __DIR__ ."/../files/".$newfilename);
 				
-				$query = mysqli_query($connection,"INSERT INTO engbekter(kod_korset, kod_kizm, kod_okujil, kod_univer, kod_fakul, kod_kafedra, sani, kuni,  file_ati, rastalu,  ball, eskertu, kod_stat, artik, ball8, saktalgan_kuni) VALUES('$korsetkish','$TutorID','11','1','$FacultyID','$cafedraID','$sani','$date','../files/$newfilename','-','$ball','$eskertu','3','0','0','$save_date')") or die(mysqli_error($connection));
+				$query = mysqli_query($connection,"INSERT INTO engbekter(kod_korset, kod_kizm, kod_okujil, kod_univer, kod_fakul, kod_kafedra, sani, kuni,  file_ati, rastalu,  ball, eskertu, kod_stat, artik, ball8, saktalgan_kuni,id_tutor) VALUES('$korsetkish','$TutorID','11','1','$FacultyID','$cafedraID','$sani','$date','../files/$newfilename','-','$ball','$eskertu','3','0','0','$save_date',$id_tutor)") or die(mysqli_error($connection));
 				header('Location: show_load_e.php');
 			} else {
 				header('Location: error.php');

@@ -340,8 +340,10 @@ echo $row['text_jildar'];
 						}
 					</style>
 					<?php
+						$query = mysqli_query($connection,"SELECT tutors.TutorID FROM tutors WHERE  Login = '$_SESSION[tutor]'") or die(mysqli_error($connection));
+						$tutor2 = mysqli_fetch_array($query);
 						
-						$tutor_id = $_SESSION['tutor'];
+						$tutor_id = $tutor2['TutorID'];
 						
 						$sql = "SELECT engbekter.ball, engbekter.engbekID, tutors.firstname, tutors.lastname, tutors.patronymic, korsetkishter.korsetkish_ati, 	engbekter.sani, engbekter.univ_avtor_san, engbekter.file_ati, engbekter.kayt_sebeb, engbekter.eskertu, status.status_name, faculties.FacultyID, status.statusID, cafedras.cafedraNameKZ, faculties.facultyNameKZ 
 						FROM engbekter 
@@ -350,7 +352,7 @@ echo $row['text_jildar'];
 						INNER JOIN korsetkishter ON korsetkishter.kod_korsetkish = engbekter.kod_korset
 						INNER JOIN faculties ON faculties.FacultyID = engbekter.kod_fakul 
 						INNER JOIN status ON status.statusID = engbekter.kod_stat 
-						WHERE Login = '$tutor_id' ORDER BY engbekter.engbekID DESC";
+						WHERE id_tutor = '$tutor_id' ORDER BY engbekter.engbekID DESC";
 						
 						$result = mysqli_query($connection,$sql) or die(mysqli_error($connection));
 						

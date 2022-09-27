@@ -36,11 +36,11 @@ echo $row['text_jildar'];
 	</div>
 	<div class = "content">
 		<div class = "content_wrapper" style = "width: 100%; margin: 0 auto; margin-top: 5px;">	
-			<h2 style = "text-align: center; padding-top: 10px;"><span style = "color: red;">[</span>Сіздің еңбегіңіз сәтті жүктелді!!!<span style = "color: red;">]</span></h2>
+			<h2 style = "text-align: center; padding-top: 10px;"><span style = "color: red;">[</span>Сіздің балл сәтті қосылды!!!<span style = "color: red;">]</span></h2>
 			<?php
 			
 				$_SESSION['tutor'];
-				header("refresh:2; url=index.php");
+				header("refresh:2; url=enbek_jukteuopk.php");
 				//$query = mysql_query("SELECT * FROM teachers WHERE login = '$_SESSION[teacher]'") or die(mysql_error());
 				//$teacher = mysql_fetch_array($query);
 				
