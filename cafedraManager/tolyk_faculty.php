@@ -207,7 +207,7 @@ echo $row['text_jildar'];
 				
 				
 				
-				$sql3 = mysqli_query($connection,"SELECT engbekter.engbekID, SUM(engbekter.ball)*0.55 AS sum_gylym, engbekter.file_ati, engbekter.sani, engbekter.univ_avtor_san, engbekter.eskertu, engbekter.ball, faculties.facultyNameKZ, cafedras.cafedraNameKZ, korsetkishter.korsetkish_ati, faculties.FacultyID, korsetkishter.typeID
+				$sql3 = mysqli_query($connection,"SELECT engbekter.engbekID, SUM(engbekter.ball)*0.50 AS sum_gylym, engbekter.file_ati, engbekter.sani, engbekter.univ_avtor_san, engbekter.eskertu, engbekter.ball, faculties.facultyNameKZ, cafedras.cafedraNameKZ, korsetkishter.korsetkish_ati, faculties.FacultyID, korsetkishter.typeID
 				FROM engbekter
 				INNER JOIN faculties ON faculties.FacultyID = engbekter.kod_fakul
 				INNER JOIN cafedras ON cafedras.cafedraID = engbekter.kod_kafedra
@@ -225,7 +225,7 @@ echo $row['text_jildar'];
 				
 				$faculty3 = mysqli_fetch_array($sql4);
 				
-				$sql5 = mysqli_query($connection,"SELECT engbekter.engbekID, SUM(engbekter.ball)*0.10 AS sum_tarbie, engbekter.file_ati, engbekter.sani, engbekter.univ_avtor_san, engbekter.eskertu, engbekter.ball, faculties.facultyNameKZ, cafedras.cafedraNameKZ, korsetkishter.korsetkish_ati, faculties.FacultyID, korsetkishter.typeID
+				$sql5 = mysqli_query($connection,"SELECT engbekter.engbekID, SUM(engbekter.ball)*0.15 AS sum_tarbie, engbekter.file_ati, engbekter.sani, engbekter.univ_avtor_san, engbekter.eskertu, engbekter.ball, faculties.facultyNameKZ, cafedras.cafedraNameKZ, korsetkishter.korsetkish_ati, faculties.FacultyID, korsetkishter.typeID
 				FROM engbekter
 				INNER JOIN faculties ON faculties.FacultyID = engbekter.kod_fakul
 				INNER JOIN cafedras ON cafedras.cafedraID = engbekter.kod_kafedra

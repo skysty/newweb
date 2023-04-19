@@ -4,7 +4,7 @@
 	
 	define('db_host','localhost');
 	define('db_user','root');
-	define('db_pass','7GAax6A4VJZ7XrqL');
+	define('db_pass','');
 	define('db_name','indikativ_2022');
 
 	
@@ -20,9 +20,9 @@
 	  faculties.FacultyID,
 	  faculties.facultyNameKZ, 
 	  faculties.shtat_sany,
-	  SUM(CASE WHEN korsetkishter.typeID = 1 THEN engbekter.ball ELSE 0 END) * 0.55 AS typ1,
+	  SUM(CASE WHEN korsetkishter.typeID = 1 THEN engbekter.ball ELSE 0 END) * 0.50 AS typ1,
 	  SUM(CASE WHEN korsetkishter.typeID = 2 THEN engbekter.ball ELSE 0 END) * 0.35 AS typ2,
-	  SUM(CASE WHEN korsetkishter.typeID = 3 THEN engbekter.ball ELSE 0 END) * 0.10 AS typ3
+	  SUM(CASE WHEN korsetkishter.typeID = 3 THEN engbekter.ball ELSE 0 END) * 0.15 AS typ3
 	FROM engbekter
 	RIGHT JOIN faculties ON faculties.FacultyID = engbekter.kod_fakul
 	left JOIN korsetkishter ON korsetkishter.kod_korsetkish = engbekter.kod_korset 

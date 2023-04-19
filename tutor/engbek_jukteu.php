@@ -184,9 +184,7 @@ echo $row['text_jildar'];
 							global $tut;
 							$output = '';
 							$sql = "SELECT * FROM korsetkishter k
-							JOIN dostupkorset dost ON k.kod_korsetkish=dost.korsetkishID
-							JOIN tutors t ON dost.tutorID = t.TutorID
-							WHERE k.bolimderID='1' And t.tutorID= '$tut'";
+							WHERE k.bolimderID='1' ";
 							$result = mysqli_query($connection,$sql) or die(mysqli_error($connection));
 							
 							while($row = mysqli_fetch_array($result)){			
@@ -209,9 +207,10 @@ echo $row['text_jildar'];
 						<textarea rows="8" cols="109" name = "tolyk_korset" id = "tolyk_korset" style = "font-size: 18px; font-family: Tahoma; margin-top: 8px; border-radius:4px;"></textarea><br /><br />
 						Орындалған күні
 						<input type = "date" name = "date" required placeholder = "жжжж-аа-кк енгізіңіз"/><br /><br />
-						ХҚТУ авторлар саны (Өзіңізді қоса санағанда)<br/>
-						<input type = "number" id = "univ_avtor_san" name = "univ_avtor_san" value = "1" min="1"/>
+						ХҚТУ авторлар саны (Өзіңізді қоса санағанда) <span style="color:red">Макс 8 автор</span><br/>
+						<input type = "number" id = "univ_avtor_san" name = "univ_avtor_san" value = "1" min="1"  oninput="compareSelectedValue()"/>
 						<br /><br />
+						<div id="hidingElem">
 						Еңбек санының түрлері
 						<select id = "select_sany" >
 							<option value = "0">---</option>
@@ -219,7 +218,37 @@ echo $row['text_jildar'];
 							<option value = "2">Деңгейі</option>
 							<option value = "5">Саны</option>
 						</select><br /><br />
-						<label for="sany" id = "label_sany">---</label><br /><input type = "number" id = "sany" name = "sany" value = "1" step="0.01"><br /><br />		
+						<label for="sany" id = "label_sany">---</label><br /><input type = "number" id = "sany" name = "sany" value = "1" step="0.01"><br />
+						</div><br />
+						<div id="avtor1">
+						<label for="avtor_bir">Автор 1:</label>
+						<input type ="text" id ="avtor_bir" name="avtor_bir" onkeyup="autoСompleteAvtor1()">
+						<div id="search-results"></div>
+						</div>
+						<div id="avtor2">
+						<label for="avtor_eki" id = "avtor_eki">Автор 3</label><br />
+						<input type = "text" id = "avtor_eki" name = "avtor_eki"><br />
+						</div>
+						<div id="avtor3">
+						<label for="avtor_ush" id = "avtor_ush">Автор 4</label><br />
+						<input type = "text" id = "avtor_ush" name = "avtor_ush"><br />
+						</div>
+						<div id="avtor4">
+						<label for="avtor_tort" id = "avtor_tort">Автор 5</label><br />
+						<input type = "text" id = "avtor_tort" name = "avtor_tort"><br />
+						</div>
+						<div id="avtor5">
+						<label for="avtor_bes" id = "avtor_bes">Автор 6</label><br />
+						<input type = "text" id = "avtor_bes" name = "avtor_bes"><br />
+						</div>
+						<div id="avtor6">
+						<label for="avtor_alty" id = "avtor_alty">Автор 7</label><br />
+						<input type = "text" id = "avtor_alty" name = "avtor_alty"><br />
+						</div>
+						<div id="avtor7">
+						<label for="avtor_jeti" id = "avtor_jeti">Автор 8</label><br />
+						<input type = "text" id = "avtor_jeti" name = "avtor_jeti"><br />
+						</div>		
 						<span>Ескерту</span><br />
 						<textarea rows="8" cols="109" name = "eskertu" style = "font-size: 18px; font-family: Tahoma; margin-top: 8px; border-radius:4px;"></textarea><br/><br/><hr />
 						<span>Растаушы файлды таңдау (PDF, JPG форматындағы файлдар)</span><br/><br/>
@@ -404,6 +433,143 @@ echo $row['text_jildar'];
 									element.value = element.value.substr(0, max_chars);
 								}
 							} 
+							function compareSelectedValue() {
+								// Получаем элемент input по его ID
+									var avtor_san = document.getElementById("univ_avtor_san");
+                                   
+									// Получаем значение поля ввода
+									var inputValue = avtor_san.value;
+                                    
+									if (inputValue === "1") {
+										hidingElem.style.display = "block";
+									}
+									// Сравниваем значение поля ввода с другим значением
+									if (inputValue === "2") {
+										hidingElem.style.display = "none";
+										avtor1.style.display = "block";
+										avtor2.style.display = "none";
+										avtor3.style.display = "none";
+										avtor4.style.display = "none";
+										avtor5.style.display = "none";
+										avtor6.style.display = "none";
+										avtor7.style.display = "none";
+									}
+									if (inputValue === "3") {
+										hidingElem.style.display = "none";
+										avtor1.style.display = "block";
+										avtor2.style.display = "block";
+										avtor3.style.display = "none";
+										avtor4.style.display = "none";
+										avtor5.style.display = "none";
+										avtor6.style.display = "none";
+										avtor7.style.display = "none";
+									}
+									if (inputValue === "4") {
+										hidingElem.style.display = "none";
+										avtor1.style.display = "block";
+										avtor2.style.display = "block";
+										avtor3.style.display = "block";
+										avtor4.style.display = "none";
+										avtor5.style.display = "none";
+										avtor6.style.display = "none";
+										avtor7.style.display = "none";
+									}
+									if (inputValue === "5") {
+										hidingElem.style.display = "none";
+										avtor1.style.display = "block";
+										avtor2.style.display = "block";
+										avtor3.style.display = "block";
+										avtor4.style.display = "block";
+										avtor5.style.display = "none";
+										avtor6.style.display = "none";
+										avtor7.style.display = "none";
+									}
+									if (inputValue === "6") {
+										hidingElem.style.display = "none";
+										avtor1.style.display = "block";
+										avtor2.style.display = "block";
+										avtor3.style.display = "block";
+										avtor4.style.display = "block";
+										avtor5.style.display = "block";
+										avtor6.style.display = "none";
+										avtor7.style.display = "none";
+									}
+									if (inputValue === "7") {
+										hidingElem.style.display = "none";
+										avtor1.style.display = "block";
+										avtor2.style.display = "block";
+										avtor3.style.display = "block";
+										avtor4.style.display = "block";
+										avtor5.style.display = "block";
+										avtor6.style.display = "block";
+										avtor7.style.display = "none";
+									}
+									if (inputValue === "8") {
+										hidingElem.style.display = "none";
+										avtor1.style.display = "block";
+										avtor2.style.display = "block";
+										avtor3.style.display = "block";
+										avtor4.style.display = "block";
+										avtor5.style.display = "block";
+										avtor6.style.display = "block";
+										avtor7.style.display = "block";
+									}
+								}
+								function hideInputText(){
+									// Получаем значение поля ввода
+									var avtor1 = document.getElementById("avtor1");
+									var avtor2 = document.getElementById("avtor2");
+									var avtor3 = document.getElementById("avtor3");
+									var avtor4 = document.getElementById("avtor4");
+									var avtor5 = document.getElementById("avtor5");
+									var avtor6 = document.getElementById("avtor6");
+									var avtor7 = document.getElementById("avtor7");
+									
+										avtor1.style.display = "none";
+										avtor2.style.display = "none";
+										avtor3.style.display = "none";
+										avtor4.style.display = "none";
+										avtor5.style.display = "none";
+										avtor6.style.display = "none";
+										avtor7.style.display = "none";
+								}
+                                // Вызываем функцию при загрузке страницы
+								window.onload = function() {
+									hideInputText();
+								};
+								function autoСompleteAvtor1() {
+									const searchInput = document.getElementById("avtor_bir");
+									const searchResults = document.getElementById('search-results');
+									
+									// Clear the search results container
+									searchResults.innerHTML = '';
+
+									// Get the search query from the input field
+									var nameAvtor = searchInput.value;
+
+									// Perform an AJAX request to fetch the search results from the server
+									const xhr = new XMLHttpRequest();
+									xhr.onreadystatechange = function() {
+										if (this.readyState === 4 && this.status === 200) {
+										// Parse the JSON response and create a list of search results
+										const results = JSON.parse(this.responseText);
+										if (results.length === 0) {
+											// Display a message if no results are found
+											searchResults.textContent = 'No results found.';
+										} else {
+											const list = document.createElement('ul');
+											results.forEach(function(result) {
+											const item = document.createElement('li');
+											item.textContent = result.name;
+											list.appendChild(item);
+											});
+											searchResults.appendChild(list);
+										}
+										}
+									};
+									xhr.open('GET', `search.php?nameAvtor=${nameAvtor}`, true);
+									xhr.send();
+								}
 						</script>
 
 </body>

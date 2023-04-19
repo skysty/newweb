@@ -229,7 +229,7 @@
 				
 				$engbek = mysqli_fetch_array($sql2);
 				
-				$sql3 = mysqli_query($connection,"SELECT engbekter.engbekID, SUM(engbekter.ball)*0.55 AS sum_gylym, engbekter.file_ati, engbekter.sani, engbekter.univ_avtor_san, engbekter.eskertu, engbekter.ball, tutors.TutorID, tutors.lastname, tutors.firstname, tutors.patronymic, faculties.facultyNameKZ, cafedras.cafedraNameKZ, korsetkishter.korsetkish_ati, status.status_name, kaytaru_sebebi.sebepter, korsetkishter.typeID
+				$sql3 = mysqli_query($connection,"SELECT engbekter.engbekID, SUM(engbekter.ball)*0.50 AS sum_gylym, engbekter.file_ati, engbekter.sani, engbekter.univ_avtor_san, engbekter.eskertu, engbekter.ball, tutors.TutorID, tutors.lastname, tutors.firstname, tutors.patronymic, faculties.facultyNameKZ, cafedras.cafedraNameKZ, korsetkishter.korsetkish_ati, status.status_name, kaytaru_sebebi.sebepter, korsetkishter.typeID
 				FROM engbekter
 				INNER JOIN tutors ON tutors.TutorID = engbekter.kod_kizm
 				INNER JOIN faculties ON faculties.FacultyID = engbekter.kod_fakul
@@ -253,7 +253,7 @@
 				
 				$engbek3 = mysqli_fetch_array($sql4);
 				
-				$sql5 = mysqli_query($connection,"SELECT engbekter.engbekID, SUM(engbekter.ball)*0.10 AS sum_tarbie, engbekter.file_ati, engbekter.sani, engbekter.univ_avtor_san, engbekter.eskertu, engbekter.ball, tutors.TutorID, tutors.lastname, tutors.firstname, tutors.patronymic, faculties.facultyNameKZ, cafedras.cafedraNameKZ, korsetkishter.korsetkish_ati, status.status_name, kaytaru_sebebi.sebepter, korsetkishter.typeID
+				$sql5 = mysqli_query($connection,"SELECT engbekter.engbekID, SUM(engbekter.ball)*0.15 AS sum_tarbie, engbekter.file_ati, engbekter.sani, engbekter.univ_avtor_san, engbekter.eskertu, engbekter.ball, tutors.TutorID, tutors.lastname, tutors.firstname, tutors.patronymic, faculties.facultyNameKZ, cafedras.cafedraNameKZ, korsetkishter.korsetkish_ati, status.status_name, kaytaru_sebebi.sebepter, korsetkishter.typeID
 				FROM engbekter
 				INNER JOIN tutors ON tutors.TutorID = engbekter.kod_kizm
 				INNER JOIN faculties ON faculties.FacultyID = engbekter.kod_fakul

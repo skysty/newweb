@@ -209,7 +209,7 @@ echo $row['text_jildar'];
 				
 				
 				
-				$sql3 = mysqli_query($connection,"SELECT engbekter.engbekID, SUM(engbekter.ball) AS sum_gylym1,SUM(engbekter.ball)*0.55 AS sum_gylym, engbekter.file_ati, engbekter.sani, cafedras.cafedraNameKZ, korsetkishter.korsetkish_ati, cafedras.cafedraID, korsetkishter.typeID
+				$sql3 = mysqli_query($connection,"SELECT engbekter.engbekID, SUM(engbekter.ball) AS sum_gylym1,SUM(engbekter.ball)*0.50 AS sum_gylym, engbekter.file_ati, engbekter.sani, cafedras.cafedraNameKZ, korsetkishter.korsetkish_ati, cafedras.cafedraID, korsetkishter.typeID
 				FROM engbekter
 				INNER JOIN cafedras ON cafedras.cafedraID = engbekter.kod_kafedra
 				INNER JOIN korsetkishter ON korsetkishter.kod_korsetkish = engbekter.kod_korset
@@ -225,7 +225,7 @@ echo $row['text_jildar'];
 				
 				$cafedra3 = mysqli_fetch_array($sql4);
 				
-				$sql5 = mysqli_query($connection,"SELECT engbekter.engbekID, SUM(engbekter.ball*0.10) AS sum_tarbie, engbekter.file_ati, engbekter.sani, cafedras.cafedraNameKZ, korsetkishter.korsetkish_ati, cafedras.cafedraID, korsetkishter.typeID
+				$sql5 = mysqli_query($connection,"SELECT engbekter.engbekID, SUM(engbekter.ball*0.15) AS sum_tarbie, engbekter.file_ati, engbekter.sani, cafedras.cafedraNameKZ, korsetkishter.korsetkish_ati, cafedras.cafedraID, korsetkishter.typeID
 				FROM engbekter
 				INNER JOIN cafedras ON cafedras.cafedraID = engbekter.kod_kafedra
 				INNER JOIN korsetkishter ON korsetkishter.kod_korsetkish = engbekter.kod_korset
