@@ -363,7 +363,8 @@ echo $row['text_jildar'];
 
 	<script>
 		$(document).ready(function(){
-		
+			$("#hideText").hide();
+			$("#univ_avtor_san2").hide();
 			$("#korsetkish").change(function(){
 				var kod_korsetkish = $("#korsetkish option:selected").text();
 				var id_esep =$("#korsetkish option:selected").attr('id_esep');
@@ -379,8 +380,16 @@ echo $row['text_jildar'];
 				}else {
 					$("#select_sany").prop('disabled', false); 
 				}
-				if (id_shekteu==4){
-					
+
+				if (id_esep==6){
+					$("#hideText").show();
+					$("#univ_avtor_san2").show();
+					$("#univ_avtor_san").hide();
+				}
+				if (id_esep>=1&&id_esep<=5){
+					$("#hideText").hide();
+					$("#univ_avtor_san2").hide();
+					$("#univ_avtor_san").show();
 				}
 				$("#select_sany").val(id_esep);									
 				
