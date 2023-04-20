@@ -207,8 +207,9 @@ echo $row['text_jildar'];
 						<textarea rows="8" cols="109" name = "tolyk_korset" id = "tolyk_korset" style = "font-size: 18px; font-family: Tahoma; margin-top: 8px; border-radius:4px;"></textarea><br /><br />
 						Орындалған күні
 						<input type = "date" name = "date" required placeholder = "жжжж-аа-кк енгізіңіз"/><br /><br />
-						ХҚТУ авторлар саны (Өзіңізді қоса санағанда) <span style="color:red">Макс 8 автор</span><br/>
-						<input type = "number" id = "univ_avtor_san" name = "univ_avtor_san" value = "1" min="1"  oninput="compareSelectedValue()"/>
+						ХҚТУ авторлар саны (Өзіңізді қоса санағанда) <span style="color:red" id="hideText">Макс 8 автор</span><br/>
+						<input type = "number" id = "univ_avtor_san" name = "univ_avtor_san" value = "1" min="1"/>
+						<input type = "number" id = "univ_avtor_san2" name = "univ_avtor_san2" value = "1" min="1"  oninput="compareSelectedValue()"/>
 						<br /><br />
 						<div id="hidingElem">
 						Еңбек санының түрлері
@@ -226,27 +227,28 @@ echo $row['text_jildar'];
 							<div id="suggesstion-box"></div>
 						</div>
 						<div class="avtor2">
-							<label for="avtor_eki" id = "avtor_eki">Автор 3<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label><br />
+							<label for="avtor_eki">Автор 3<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label><br />
 							<input type = "text" id = "avtor_eki" name = "avtor_eki" ><br />
+							<div id="suggesstion-box"></div>
 						</div>
 						<div class="avtor3">
-							<label for="avtor_ush" id = "avtor_ush">Автор 4<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label><br />
+							<label for="avtor_ush">Автор 4<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label><br />
 							<input type = "text" id = "avtor_ush" name = "avtor_ush"><br />
 						</div>
 						<div class="avtor4">
-							<label for="avtor_tort" id = "avtor_tort">Автор 5<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label><br />
+							<label for="avtor_tort">Автор 5<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label><br />
 							<input type = "text" id = "avtor_tort" name = "avtor_tort"><br />
 						</div>
 						<div class="avtor5">
-							<label for="avtor_bes" id = "avtor_bes">Автор 6<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label><br />
+							<label for="avtor_bes" >Автор 6<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label><br />
 							<input type = "text" id = "avtor_bes" name = "avtor_bes"><br />
 						</div>
 						<div class="avtor6">
-							<label for="avtor_alty" id = "avtor_alty">Автор 7<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label><br />
+							<label for="avtor_alty">Автор 7<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label><br />
 							<input type = "text" id = "avtor_alty" name = "avtor_alty"><br />
 						</div>
 						<div class="avtor7">
-							<label for="avtor_jeti" id = "avtor_jeti">Автор 8<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label><br />
+							<label for="avtor_jeti">Автор 8<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label><br />
 							<input type = "text" id = "avtor_jeti" name = "avtor_jeti"><br />
 						</div>		
 						<span>Ескерту</span><br />
@@ -377,7 +379,9 @@ echo $row['text_jildar'];
 				}else {
 					$("#select_sany").prop('disabled', false); 
 				}
-				
+				if (id_shekteu==4){
+					
+				}
 				$("#select_sany").val(id_esep);									
 				
 				var id_comment =$("#korsetkish option:selected").attr('id_comment');
@@ -457,7 +461,7 @@ echo $row['text_jildar'];
 			};
 		function compareSelectedValue() {
 			// Получаем элемент input по его ID
-				var avtor_san = document.getElementById("univ_avtor_san");
+				var avtor_san = document.getElementById("univ_avtor_san2");
 				// Получаем элемент input по его Class
 				var avtor1 = document.querySelector('.avtor1');
 				var avtor2 = document.querySelector('.avtor2');
@@ -573,24 +577,24 @@ echo $row['text_jildar'];
 				$("#suggesstion-box").hide();
 			}
 			$(document).ready(function() {
-				$("#avtor_bir").keyup(function() {
+				$("#avtor_eki").keyup(function() {
 					$.ajax({
 						type: "POST",
-						url: "searchAvtor.php",
+						url: "searchAvtor2.php",
 						data: 'keyword=' + $(this).val(),
 						beforeSend: function() {
-							$("#avtor_bir").css("background", "#FFF url(../img/LoaderIcon.gif) no-repeat 165px");
+							$("#avtor_eki").css("background", "#FFF url(../img/LoaderIcon.gif) no-repeat 165px");
 						},
 						success: function(data) {
 							$("#suggesstion-box").show();
 							$("#suggesstion-box").html(data);
-							$("#avtor_bir").css("background", "#FFF");
+							$("#avtor_eki").css("background", "#FFF");
 						}
 					});
 				});
 			});
 			function selectCountry(val) {
-				$("#avtor_bir").val(val);
+				$("#avtor_eki").val(val);
 				$("#suggesstion-box").hide();
 			}
 	</script>

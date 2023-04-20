@@ -33,7 +33,7 @@ body{
     cursor: pointer;
 }
 
-#avtor_bir {
+#avtor_bir, #avtor_eki, #avtor_ush, #avtor_tort, #avtor_bes, #avtor_alty, #avtor_jeti  {
     padding: 10px;
     border: #a8d4b1 1px solid;
     border-radius: 4px;
