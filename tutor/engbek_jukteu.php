@@ -220,34 +220,34 @@ echo $row['text_jildar'];
 						</select><br /><br />
 						<label for="sany" id = "label_sany">---</label><br /><input type = "number" id = "sany" name = "sany" value = "1" step="0.01"><br />
 						</div><br />
-						<div id="avtor1">
-						<label for="avtor_bir">Автор 1:</label>
-						<input type ="text" id ="avtor_bir" name="avtor_bir" onkeyup="autoСompleteAvtor1()">
-						<div id="search-results"></div>
+						<div class="avtor1">
+							<label for="avtor_bir">Автор 1:</label>
+							<input type ="text" id ="avtor_bir" name="avtor_bir"  placeholder="Type to search...">
+							<div id="myDropdown"></div>
 						</div>
-						<div id="avtor2">
-						<label for="avtor_eki" id = "avtor_eki">Автор 3</label><br />
-						<input type = "text" id = "avtor_eki" name = "avtor_eki"><br />
+						<div class="avtor2">
+							<label for="avtor_eki" id = "avtor_eki">Автор 3</label><br />
+							<input type = "text" id = "avtor_eki" name = "avtor_eki" ><br />
 						</div>
-						<div id="avtor3">
-						<label for="avtor_ush" id = "avtor_ush">Автор 4</label><br />
-						<input type = "text" id = "avtor_ush" name = "avtor_ush"><br />
+						<div class="avtor3">
+							<label for="avtor_ush" id = "avtor_ush">Автор 4</label><br />
+							<input type = "text" id = "avtor_ush" name = "avtor_ush"><br />
 						</div>
-						<div id="avtor4">
-						<label for="avtor_tort" id = "avtor_tort">Автор 5</label><br />
-						<input type = "text" id = "avtor_tort" name = "avtor_tort"><br />
+						<div class="avtor4">
+							<label for="avtor_tort" id = "avtor_tort">Автор 5</label><br />
+							<input type = "text" id = "avtor_tort" name = "avtor_tort"><br />
 						</div>
-						<div id="avtor5">
-						<label for="avtor_bes" id = "avtor_bes">Автор 6</label><br />
-						<input type = "text" id = "avtor_bes" name = "avtor_bes"><br />
+						<div class="avtor5">
+							<label for="avtor_bes" id = "avtor_bes">Автор 6</label><br />
+							<input type = "text" id = "avtor_bes" name = "avtor_bes"><br />
 						</div>
-						<div id="avtor6">
-						<label for="avtor_alty" id = "avtor_alty">Автор 7</label><br />
-						<input type = "text" id = "avtor_alty" name = "avtor_alty"><br />
+						<div class="avtor6">
+							<label for="avtor_alty" id = "avtor_alty">Автор 7</label><br />
+							<input type = "text" id = "avtor_alty" name = "avtor_alty"><br />
 						</div>
-						<div id="avtor7">
-						<label for="avtor_jeti" id = "avtor_jeti">Автор 8</label><br />
-						<input type = "text" id = "avtor_jeti" name = "avtor_jeti"><br />
+						<div class="avtor7">
+							<label for="avtor_jeti" id = "avtor_jeti">Автор 8</label><br />
+							<input type = "text" id = "avtor_jeti" name = "avtor_jeti"><br />
 						</div>		
 						<span>Ескерту</span><br />
 						<textarea rows="8" cols="109" name = "eskertu" style = "font-size: 18px; font-family: Tahoma; margin-top: 8px; border-radius:4px;"></textarea><br/><br/><hr />
@@ -359,218 +359,200 @@ echo $row['text_jildar'];
 	<div class = "footer">
 	</div>
 
-						<script>
-							$(document).ready(function(){
-							
-								$("#korsetkish").change(function(){
-									var kod_korsetkish = $("#korsetkish option:selected").text();
-									var id_esep =$("#korsetkish option:selected").attr('id_esep');
-									var id_shekteu =$("#korsetkish option:selected").attr('id_shekteu');
+	<script>
+		$(document).ready(function(){
+		
+			$("#korsetkish").change(function(){
+				var kod_korsetkish = $("#korsetkish option:selected").text();
+				var id_esep =$("#korsetkish option:selected").attr('id_esep');
+				var id_shekteu =$("#korsetkish option:selected").attr('id_shekteu');
 
-                                    if (id_shekteu <= 1) {
-                                    	$("#sany").prop('disabled', true); 
-                                    }else {
-                                    	$("#sany").prop('disabled', false); 
-                                    }
-									if (id_shekteu <= 1) {
-                                    	$("#select_sany").prop('disabled', true); 
-                                    }else {
-                                    	$("#select_sany").prop('disabled', false); 
-                                    }
-									
-									$("#select_sany").val(id_esep);									
-									
-									var id_comment =$("#korsetkish option:selected").attr('id_comment');
-									$("#label_sany").text(id_comment);
-									$.ajax({
-										method:"POST",
-										data:{kod_korsetkish:kod_korsetkish},
-										dataType:"text",
-										success:function(data){
-											$("#tolyk_korset").text(kod_korsetkish);
-										}
-									});
-								});
-								
+				if (id_shekteu <= 1) {
+					$("#sany").prop('disabled', true); 
+				}else {
+					$("#sany").prop('disabled', false); 
+				}
+				if (id_shekteu <= 1) {
+					$("#select_sany").prop('disabled', true); 
+				}else {
+					$("#select_sany").prop('disabled', false); 
+				}
+				
+				$("#select_sany").val(id_esep);									
+				
+				var id_comment =$("#korsetkish option:selected").attr('id_comment');
+				$("#label_sany").text(id_comment);
+				$.ajax({
+					method:"POST",
+					data:{kod_korsetkish:kod_korsetkish},
+					dataType:"text",
+					success:function(data){
+						$("#tolyk_korset").text(kod_korsetkish);
+					}
+				});
+			});
+			
 
-								$("#form1").submit(function( event ) {
+			$("#form1").submit(function( event ) {
 
-									var id_shekteu = $("#korsetkish option:selected").attr('id_shekteu');
-									var sany = $("#sany").val();
+				var id_shekteu = $("#korsetkish option:selected").attr('id_shekteu');
+				var sany = $("#sany").val();
 
-                                     if ( parseInt(id_shekteu) <= parseInt(sany) && !$("#sany").prop('disabled')) {
-                                    	 alert("Шектік санынан асып кеттіңіз!\nқайта толтырыңыз");
-						  				event.preventDefault();
-                                    	
-                                    }
-								
-								});
-								$("#select_sany").change(function(){
-									var select_sany = $("#select_sany option:selected").text();
-									var select_sanyID = $("#select_sany option:selected").val();
-									$.ajax({
-										method:"POST",
-										data:{select_sany:select_sany},
-										dataType:"text",
-										success:function(data){
-											$("#label_sany").text(select_sany);
-											if(select_sanyID == 3){
-												alert("Сағат саны максимал 36");
-												$('#sany').prop('min','1');
-												$('#sany').prop('max','36');
-											} else if(select_sanyID == 4){
-												alert("Шаршы см. максимал 500");
-												$('#sany').prop('min','1');
-												$('#sany').prop('max','500');
-											}								
-										}
-									});
-								});
-							});
-							function limit(element){
-								var max_chars = 3;
-								if(element.value.length > max_chars) {
-									element.value = element.value.substr(0, max_chars);
-								}
-							} 
-							function compareSelectedValue() {
-								// Получаем элемент input по его ID
-									var avtor_san = document.getElementById("univ_avtor_san");
-                                   
-									// Получаем значение поля ввода
-									var inputValue = avtor_san.value;
-                                    
-									if (inputValue === "1") {
-										hidingElem.style.display = "block";
-									}
-									// Сравниваем значение поля ввода с другим значением
-									if (inputValue === "2") {
-										hidingElem.style.display = "none";
-										avtor1.style.display = "block";
-										avtor2.style.display = "none";
-										avtor3.style.display = "none";
-										avtor4.style.display = "none";
-										avtor5.style.display = "none";
-										avtor6.style.display = "none";
-										avtor7.style.display = "none";
-									}
-									if (inputValue === "3") {
-										hidingElem.style.display = "none";
-										avtor1.style.display = "block";
-										avtor2.style.display = "block";
-										avtor3.style.display = "none";
-										avtor4.style.display = "none";
-										avtor5.style.display = "none";
-										avtor6.style.display = "none";
-										avtor7.style.display = "none";
-									}
-									if (inputValue === "4") {
-										hidingElem.style.display = "none";
-										avtor1.style.display = "block";
-										avtor2.style.display = "block";
-										avtor3.style.display = "block";
-										avtor4.style.display = "none";
-										avtor5.style.display = "none";
-										avtor6.style.display = "none";
-										avtor7.style.display = "none";
-									}
-									if (inputValue === "5") {
-										hidingElem.style.display = "none";
-										avtor1.style.display = "block";
-										avtor2.style.display = "block";
-										avtor3.style.display = "block";
-										avtor4.style.display = "block";
-										avtor5.style.display = "none";
-										avtor6.style.display = "none";
-										avtor7.style.display = "none";
-									}
-									if (inputValue === "6") {
-										hidingElem.style.display = "none";
-										avtor1.style.display = "block";
-										avtor2.style.display = "block";
-										avtor3.style.display = "block";
-										avtor4.style.display = "block";
-										avtor5.style.display = "block";
-										avtor6.style.display = "none";
-										avtor7.style.display = "none";
-									}
-									if (inputValue === "7") {
-										hidingElem.style.display = "none";
-										avtor1.style.display = "block";
-										avtor2.style.display = "block";
-										avtor3.style.display = "block";
-										avtor4.style.display = "block";
-										avtor5.style.display = "block";
-										avtor6.style.display = "block";
-										avtor7.style.display = "none";
-									}
-									if (inputValue === "8") {
-										hidingElem.style.display = "none";
-										avtor1.style.display = "block";
-										avtor2.style.display = "block";
-										avtor3.style.display = "block";
-										avtor4.style.display = "block";
-										avtor5.style.display = "block";
-										avtor6.style.display = "block";
-										avtor7.style.display = "block";
-									}
-								}
-								function hideInputText(){
-									// Получаем значение поля ввода
-									var avtor1 = document.getElementById("avtor1");
-									var avtor2 = document.getElementById("avtor2");
-									var avtor3 = document.getElementById("avtor3");
-									var avtor4 = document.getElementById("avtor4");
-									var avtor5 = document.getElementById("avtor5");
-									var avtor6 = document.getElementById("avtor6");
-									var avtor7 = document.getElementById("avtor7");
-									
-										avtor1.style.display = "none";
-										avtor2.style.display = "none";
-										avtor3.style.display = "none";
-										avtor4.style.display = "none";
-										avtor5.style.display = "none";
-										avtor6.style.display = "none";
-										avtor7.style.display = "none";
-								}
-                                // Вызываем функцию при загрузке страницы
-								window.onload = function() {
-									hideInputText();
-								};
-								function autoСompleteAvtor1() {
-									const searchInput = document.getElementById("avtor_bir");
-									const searchResults = document.getElementById('search-results');
-									
-									// Clear the search results container
-									searchResults.innerHTML = '';
-
-									// Get the search query from the input field
-									var nameAvtor = searchInput.value;
-
-									// Perform an AJAX request to fetch the search results from the server
-									const xhr = new XMLHttpRequest();
-									xhr.onreadystatechange = function() {
-										if (this.readyState === 4 && this.status === 200) {
-										// Parse the JSON response and create a list of search results
-										const results = JSON.parse(this.responseText);
-										if (results.length === 0) {
-											// Display a message if no results are found
-											searchResults.textContent = 'No results found.';
-										} else {
-											const list = document.createElement('ul');
-											results.forEach(function(result) {
-											const item = document.createElement('li');
-											item.textContent = result.name;
-											list.appendChild(item);
-											});
-											searchResults.appendChild(list);
-										}
-										}
-									};
-									xhr.open('GET', `search.php?nameAvtor=${nameAvtor}`, true);
-									xhr.send();
-								}
-						</script>
-
+					if ( parseInt(id_shekteu) <= parseInt(sany) && !$("#sany").prop('disabled')) {
+						alert("Шектік санынан асып кеттіңіз!\nқайта толтырыңыз");
+					event.preventDefault();
+					
+				}
+			
+			});
+			$("#select_sany").change(function(){
+				var select_sany = $("#select_sany option:selected").text();
+				var select_sanyID = $("#select_sany option:selected").val();
+				$.ajax({
+					method:"POST",
+					data:{select_sany:select_sany},
+					dataType:"text",
+					success:function(data){
+						$("#label_sany").text(select_sany);
+						if(select_sanyID == 3){
+							alert("Сағат саны максимал 36");
+							$('#sany').prop('min','1');
+							$('#sany').prop('max','36');
+						} else if(select_sanyID == 4){
+							alert("Шаршы см. максимал 500");
+							$('#sany').prop('min','1');
+							$('#sany').prop('max','500');
+						}								
+					}
+				});
+			});
+		});
+		function limit(element){
+			var max_chars = 3;
+			if(element.value.length > max_chars) {
+				element.value = element.value.substr(0, max_chars);
+			}
+		} 
+		function hideInputText(){
+				// Получаем значение поля ввода
+				var avtor1 = document.querySelector('.avtor1');
+				var avtor2 = document.querySelector('.avtor2');
+				var avtor3 = document.querySelector('.avtor3');
+				var avtor4 = document.querySelector('.avtor4');
+				var avtor5 = document.querySelector('.avtor5');
+				var avtor6 = document.querySelector('.avtor6');
+				var avtor7 = document.querySelector('.avtor7');
+				
+					avtor1.style.display = "none";
+					avtor2.style.display = "none";
+					avtor3.style.display = "none";
+					avtor4.style.display = "none";
+					avtor5.style.display = "none";
+					avtor6.style.display = "none";
+					avtor7.style.display = "none";
+			}
+			// Вызываем функцию при загрузке страницы
+			window.onload = function() {
+				hideInputText();
+			};
+		function compareSelectedValue() {
+			// Получаем элемент input по его ID
+				var avtor_san = document.getElementById("univ_avtor_san");
+				// Получаем элемент input по его Class
+				var avtor1 = document.querySelector('.avtor1');
+				var avtor2 = document.querySelector('.avtor2');
+				var avtor3 = document.querySelector('.avtor3');
+				var avtor4 = document.querySelector('.avtor4');
+				var avtor5 = document.querySelector('.avtor5');
+				var avtor6 = document.querySelector('.avtor6');
+				var avtor7 = document.querySelector('.avtor7');
+				// Получаем значение поля ввода
+				var inputValue = avtor_san.value;
+				
+				if (inputValue === "1") {
+					hidingElem.style.display = "block";
+					avtor1.style.display = "none";
+					avtor2.style.display = "none";
+					avtor3.style.display = "none";
+					avtor4.style.display = "none";
+					avtor5.style.display = "none";
+					avtor6.style.display = "none";
+					avtor7.style.display = "none";
+				}
+				// Сравниваем значение поля ввода с другим значением
+				if (inputValue === "2") {
+					hidingElem.style.display = "none";
+					avtor1.style.display = "block";
+					avtor2.style.display = "none";
+					avtor3.style.display = "none";
+					avtor4.style.display = "none";
+					avtor5.style.display = "none";
+					avtor6.style.display = "none";
+					avtor7.style.display = "none";
+				}
+				if (inputValue === "3") {
+					hidingElem.style.display = "none";
+					avtor1.style.display = "block";
+					avtor2.style.display = "block";
+					avtor3.style.display = "none";
+					avtor4.style.display = "none";
+					avtor5.style.display = "none";
+					avtor6.style.display = "none";
+					avtor7.style.display = "none";
+				}
+				if (inputValue === "4") {
+					hidingElem.style.display = "none";
+					avtor1.style.display = "block";
+					avtor2.style.display = "block";
+					avtor3.style.display = "block";
+					avtor4.style.display = "none";
+					avtor5.style.display = "none";
+					avtor6.style.display = "none";
+					avtor7.style.display = "none";
+				}
+				if (inputValue === "5") {
+					hidingElem.style.display = "none";
+					avtor1.style.display = "block";
+					avtor2.style.display = "block";
+					avtor3.style.display = "block";
+					avtor4.style.display = "block";
+					avtor5.style.display = "none";
+					avtor6.style.display = "none";
+					avtor7.style.display = "none";
+				}
+				if (inputValue === "6") {
+					hidingElem.style.display = "none";
+					avtor1.style.display = "block";
+					avtor2.style.display = "block";
+					avtor3.style.display = "block";
+					avtor4.style.display = "block";
+					avtor5.style.display = "block";
+					avtor6.style.display = "none";
+					avtor7.style.display = "none";
+				}
+				if (inputValue === "7") {
+					hidingElem.style.display = "none";
+					avtor1.style.display = "block";
+					avtor2.style.display = "block";
+					avtor3.style.display = "block";
+					avtor4.style.display = "block";
+					avtor5.style.display = "block";
+					avtor6.style.display = "block";
+					avtor7.style.display = "none";
+				}
+				if (inputValue === "8") {
+					hidingElem.style.display = "none";
+					avtor1.style.display = "block";
+					avtor2.style.display = "block";
+					avtor3.style.display = "block";
+					avtor4.style.display = "block";
+					avtor5.style.display = "block";
+					avtor6.style.display = "block";
+					avtor7.style.display = "block";
+				}
+			}
+			
+	</script>
+<script type = "text/javascript" src = "../js/searcher.js"></script>
 </body>
 </html>
