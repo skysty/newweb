@@ -221,32 +221,32 @@ echo $row['text_jildar'];
 						<label for="sany" id = "label_sany">---</label><br /><input type = "number" id = "sany" name = "sany" value = "1" step="0.01"><br />
 						</div><br />
 						<div class="avtor1">
-							<label for="avtor_bir">Автор 1:</label>
-							<input type ="text" id ="avtor_bir" name="avtor_bir"  placeholder="Type to search...">
-							<div id="myDropdown"></div>
+							<label for="avtor_bir">Автор 2:<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label>
+							<input type ="text" id ="avtor_bir" name="avtor_bir"  placeholder="Іздеу үшін теріңіз...">
+							<div id="suggesstion-box"></div>
 						</div>
 						<div class="avtor2">
-							<label for="avtor_eki" id = "avtor_eki">Автор 3</label><br />
+							<label for="avtor_eki" id = "avtor_eki">Автор 3<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label><br />
 							<input type = "text" id = "avtor_eki" name = "avtor_eki" ><br />
 						</div>
 						<div class="avtor3">
-							<label for="avtor_ush" id = "avtor_ush">Автор 4</label><br />
+							<label for="avtor_ush" id = "avtor_ush">Автор 4<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label><br />
 							<input type = "text" id = "avtor_ush" name = "avtor_ush"><br />
 						</div>
 						<div class="avtor4">
-							<label for="avtor_tort" id = "avtor_tort">Автор 5</label><br />
+							<label for="avtor_tort" id = "avtor_tort">Автор 5<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label><br />
 							<input type = "text" id = "avtor_tort" name = "avtor_tort"><br />
 						</div>
 						<div class="avtor5">
-							<label for="avtor_bes" id = "avtor_bes">Автор 6</label><br />
+							<label for="avtor_bes" id = "avtor_bes">Автор 6<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label><br />
 							<input type = "text" id = "avtor_bes" name = "avtor_bes"><br />
 						</div>
 						<div class="avtor6">
-							<label for="avtor_alty" id = "avtor_alty">Автор 7</label><br />
+							<label for="avtor_alty" id = "avtor_alty">Автор 7<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label><br />
 							<input type = "text" id = "avtor_alty" name = "avtor_alty"><br />
 						</div>
 						<div class="avtor7">
-							<label for="avtor_jeti" id = "avtor_jeti">Автор 8</label><br />
+							<label for="avtor_jeti" id = "avtor_jeti">Автор 8<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label><br />
 							<input type = "text" id = "avtor_jeti" name = "avtor_jeti"><br />
 						</div>		
 						<span>Ескерту</span><br />
@@ -551,8 +551,49 @@ echo $row['text_jildar'];
 					avtor7.style.display = "block";
 				}
 			}
-			
+			$(document).ready(function() {
+				$("#avtor_bir").keyup(function() {
+					$.ajax({
+						type: "POST",
+						url: "searchAvtor.php",
+						data: 'keyword=' + $(this).val(),
+						beforeSend: function() {
+							$("#avtor_bir").css("background", "#FFF url(../img/LoaderIcon.gif) no-repeat 165px");
+						},
+						success: function(data) {
+							$("#suggesstion-box").show();
+							$("#suggesstion-box").html(data);
+							$("#avtor_bir").css("background", "#FFF");
+						}
+					});
+				});
+			});
+			function selectCountry(val) {
+				$("#avtor_bir").val(val);
+				$("#suggesstion-box").hide();
+			}
+			$(document).ready(function() {
+				$("#avtor_bir").keyup(function() {
+					$.ajax({
+						type: "POST",
+						url: "searchAvtor.php",
+						data: 'keyword=' + $(this).val(),
+						beforeSend: function() {
+							$("#avtor_bir").css("background", "#FFF url(../img/LoaderIcon.gif) no-repeat 165px");
+						},
+						success: function(data) {
+							$("#suggesstion-box").show();
+							$("#suggesstion-box").html(data);
+							$("#avtor_bir").css("background", "#FFF");
+						}
+					});
+				});
+			});
+			function selectCountry(val) {
+				$("#avtor_bir").val(val);
+				$("#suggesstion-box").hide();
+			}
 	</script>
-<script type = "text/javascript" src = "../js/searcher.js"></script>
+
 </body>
 </html>
