@@ -227,30 +227,30 @@ echo $row['text_jildar'];
 							<div id="suggesstion-box"></div>
 						</div>
 						<div class="avtor2">
-							<label for="avtor_eki">Автор 3<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label><br />
-							<input type = "text" id = "avtor_eki" name = "avtor_eki" ><br />
-							<div id="suggesstion-box"></div>
+							<label for="avtor_eki">Автор 3<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label>
+							<input type = "text" id = "avtor_eki" name = "avtor_eki" placeholder="Іздеу үшін теріңіз...">
+							<div id="suggesstion-box2"></div>
 						</div>
 						<div class="avtor3">
-							<label for="avtor_ush">Автор 4<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label><br />
-							<input type = "text" id = "avtor_ush" name = "avtor_ush"><br />
+							<label for="avtor_ush">Автор 4<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label>
+							<input type = "text" id = "avtor_ush" name = "avtor_ush" placeholder="Іздеу үшін теріңіз...">
+							<div id="suggesstion-box3"></div>
 						</div>
 						<div class="avtor4">
-							<label for="avtor_tort">Автор 5<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label><br />
-							<input type = "text" id = "avtor_tort" name = "avtor_tort"><br />
+							<label for="avtor_tort">Автор 5<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label>
+							<input type = "text" id = "avtor_tort" name = "avtor_tort" placeholder="Іздеу үшін теріңіз...">
+							<div id="suggesstion-box4"></div>
 						</div>
 						<div class="avtor5">
-							<label for="avtor_bes" >Автор 6<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label><br />
-							<input type = "text" id = "avtor_bes" name = "avtor_bes"><br />
+							<label for="avtor_bes" >Автор 6<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label>
+							<input type = "text" id = "avtor_bes" name = "avtor_bes" placeholder="Іздеу үшін теріңіз...">
+							<div id="suggesstion-box5"></div>
 						</div>
 						<div class="avtor6">
-							<label for="avtor_alty">Автор 7<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label><br />
-							<input type = "text" id = "avtor_alty" name = "avtor_alty"><br />
+							<label for="avtor_alty">Автор 7<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label>
+							<input type = "text" id = "avtor_alty" name = "avtor_alty" placeholder="Іздеу үшін теріңіз...">
+							<div id="suggesstion-box6"></div>
 						</div>
-						<div class="avtor7">
-							<label for="avtor_jeti">Автор 8<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label><br />
-							<input type = "text" id = "avtor_jeti" name = "avtor_jeti"><br />
-						</div>		
 						<span>Ескерту</span><br />
 						<textarea rows="8" cols="109" name = "eskertu" style = "font-size: 18px; font-family: Tahoma; margin-top: 8px; border-radius:4px;"></textarea><br/><br/><hr />
 						<span>Растаушы файлды таңдау (PDF, JPG форматындағы файлдар)</span><br/><br/>
@@ -551,19 +551,10 @@ echo $row['text_jildar'];
 					avtor4.style.display = "block";
 					avtor5.style.display = "block";
 					avtor6.style.display = "block";
-					avtor7.style.display = "none";
 				}
-				if (inputValue === "8") {
-					hidingElem.style.display = "none";
-					avtor1.style.display = "block";
-					avtor2.style.display = "block";
-					avtor3.style.display = "block";
-					avtor4.style.display = "block";
-					avtor5.style.display = "block";
-					avtor6.style.display = "block";
-					avtor7.style.display = "block";
-				}
+				
 			}
+			/*----------автор екі-------------*/
 			$(document).ready(function() {
 				$("#avtor_bir").keyup(function() {
 					$.ajax({
@@ -585,6 +576,7 @@ echo $row['text_jildar'];
 				$("#avtor_bir").val(val);
 				$("#suggesstion-box").hide();
 			}
+		/*----------автор үш-------------*/
 			$(document).ready(function() {
 				$("#avtor_eki").keyup(function() {
 					$.ajax({
@@ -595,16 +587,104 @@ echo $row['text_jildar'];
 							$("#avtor_eki").css("background", "#FFF url(../img/LoaderIcon.gif) no-repeat 165px");
 						},
 						success: function(data) {
-							$("#suggesstion-box").show();
-							$("#suggesstion-box").html(data);
+							$("#suggesstion-box2").show();
+							$("#suggesstion-box2").html(data);
 							$("#avtor_eki").css("background", "#FFF");
 						}
 					});
 				});
 			});
-			function selectCountry(val) {
+			function selectAvtor2(val) {
 				$("#avtor_eki").val(val);
-				$("#suggesstion-box").hide();
+				$("#suggesstion-box2").hide();
+			}
+           /*----------автор төрт-------------*/
+			$(document).ready(function() {
+				$("#avtor_ush").keyup(function() {
+					$.ajax({
+						type: "POST",
+						url: "searchAvtor3.php",
+						data: 'keyword=' + $(this).val(),
+						beforeSend: function() {
+							$("#avtor_ush").css("background", "#FFF url(../img/LoaderIcon.gif) no-repeat 165px");
+						},
+						success: function(data) {
+							$("#suggesstion-box3").show();
+							$("#suggesstion-box3").html(data);
+							$("#avtor_ush").css("background", "#FFF");
+						}
+					});
+				});
+			});
+			function selectAvtor3(val) {
+				$("#avtor_ush").val(val);
+				$("#suggesstion-box3").hide();
+			}
+			/*----------автор бес-------------*/
+			$(document).ready(function() {
+				$("#avtor_tort").keyup(function() {
+					$.ajax({
+						type: "POST",
+						url: "searchAvtor4.php",
+						data: 'keyword=' + $(this).val(),
+						beforeSend: function() {
+							$("#avtor_tort").css("background", "#FFF url(../img/LoaderIcon.gif) no-repeat 165px");
+						},
+						success: function(data) {
+							$("#suggesstion-box4").show();
+							$("#suggesstion-box4").html(data);
+							$("#avtor_tort").css("background", "#FFF");
+						}
+					});
+				});
+			});
+			function selectAvtor4(val) {
+				$("#avtor_tort").val(val);
+				$("#suggesstion-box4").hide();
+			}
+			/*----------автор алты-------------*/
+			$(document).ready(function() {
+				$("#avtor_bes").keyup(function() {
+					$.ajax({
+						type: "POST",
+						url: "searchAvtor5.php",
+						data: 'keyword=' + $(this).val(),
+						beforeSend: function() {
+							$("#avtor_bes").css("background", "#FFF url(../img/LoaderIcon.gif) no-repeat 165px");
+						},
+						success: function(data) {
+							$("#suggesstion-box5").show();
+							$("#suggesstion-box5").html(data);
+							$("#avtor_bes").css("background", "#FFF");
+						}
+					});
+				});
+			});
+			function selectAvtor5(val) {
+				$("#avtor_bes").val(val);
+				$("#suggesstion-box5").hide();
+			}
+			/*----------автор жеті-------------*/
+			$(document).ready(function() {
+				$("#avtor_alty").keyup(function() {
+					$.ajax({
+						type: "POST",
+						url: "searchAvtor6.php",
+						data: 'keyword=' + $(this).val(),
+						beforeSend: function() {
+							$("#avtor_alty").css("background", "#FFF url(../img/LoaderIcon.gif) no-repeat 165px");
+						},
+						success: function(data) {
+							$("#suggesstion-box6").show();
+							$("#suggesstion-box6").html(data);
+							$("#avtor_alty").css("background", "#FFF");
+						}
+					});
+				});
+			});
+			function selectAvtor6(val) {
+				$("#avtor_alty").val(val);
+				$("#suggesstion-box6").hide();
 			}
 	</script>
 

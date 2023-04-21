@@ -23,7 +23,7 @@ if (!empty($_POST["keyword"])) {
             <?php
             while ($row = mysqli_fetch_assoc($result)) {
             ?>
-                <li onClick="selectCountry('<?php echo $row['Login'] ?>');">
+                <li onClick="selectAvtor2('<?php echo $row['Login'] ?>');">
                     <?php echo $row['lastname'] . ' ' . $row['firstname'] . ' ' . $row['patronymic']; ?>
                 </li>
             <?php
