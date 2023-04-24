@@ -209,17 +209,18 @@ echo $row['text_jildar'];
 						<input type = "date" name = "date" required placeholder = "жжжж-аа-кк енгізіңіз"/><br /><br />
 						ХҚТУ авторлар саны (Өзіңізді қоса санағанда) <span style="color:red" id="hideText">Макс 8 автор</span><br/>
 						<input type = "number" id = "univ_avtor_san" name = "univ_avtor_san" value = "1" min="1"/>
-						<input type = "number" id = "univ_avtor_san2" name = "univ_avtor_san2" value = "1" min="1"  oninput="compareSelectedValue()"/>
+						<input type = "number" id = "univ_avtor_san2" name = "univ_avtor_san2" value = "1" min="1"  oninput="compareSelectedValue()" required="Автор санын енгізіңіз"/>
 						<br /><br />
 						<div id="hidingElem">
-						Еңбек санының түрлері
-						<select id = "select_sany" >
-							<option value = "0">---</option>
-							<option value = "1">Әр 1 млн. теңге үшін</option>
-							<option value = "2">Деңгейі</option>
-							<option value = "5">Саны</option>
-						</select><br /><br />
-						<label for="sany" id = "label_sany">---</label><br /><input type = "number" id = "sany" name = "sany" value = "1" step="0.01"><br />
+							Еңбек санының түрлері
+							<select id = "select_sany" >
+								<option value = "0">---</option>
+								<option value = "1">Әр 1 млн. теңге үшін</option>
+								<option value = "2">Деңгейі</option>
+								<option value = "5">Саны</option>
+							</select><br /><br />
+							<label for="sany" id = "label_sany">---</label><br />
+							<input type = "number" id = "sany" name = "sany" value = "1" step="0.01"><br />
 						</div><br />
 						<div class="avtor1">
 							<label for="avtor_bir">Автор 2:<span style="color:red">* Автордың толық  аты-жөнін қараңыз</span></label>
@@ -265,6 +266,7 @@ echo $row['text_jildar'];
 
 						
 						<input type = "hidden" name = "tutor_id" value = "<?php echo $tutor['TutorID'];?>"/>
+						<input type = "text" name = "id_esep" id ="id_esep1"  value=""/>
 						<input type = "hidden" name = "cafedra" value = "<?php echo $tutor['cafedraID'];?>"/>
 						<input type = "hidden" name = "faculty" value = "<?php echo $tutor['FacultyID'];?>"/>
 						<input type = "hidden" name = "save_date" value = "<?php date_default_timezone_set("Asia/Dhaka"); echo date("d/m/Y H:i:s");?>"/>						
@@ -365,6 +367,7 @@ echo $row['text_jildar'];
 		$(document).ready(function(){
 			$("#hideText").hide();
 			$("#univ_avtor_san2").hide();
+			$("#univ_avtor_san2").prop('disabled', true)
 			$("#korsetkish").change(function(){
 				var kod_korsetkish = $("#korsetkish option:selected").text();
 				var id_esep =$("#korsetkish option:selected").attr('id_esep');
@@ -388,11 +391,15 @@ echo $row['text_jildar'];
 				}
 				if (id_esep>=1&&id_esep<=5){
 					$("#hideText").hide();
+					$("#univ_avtor_san2").val('');
 					$("#univ_avtor_san2").hide();
 					$("#univ_avtor_san").show();
+					$("#hidingElem").show();
+					$('.my-class').find(':input').val('');
+
 				}
 				$("#select_sany").val(id_esep);									
-				
+				$("#id_esep1").val(id_esep);
 				var id_comment =$("#korsetkish option:selected").attr('id_comment');
 				$("#label_sany").text(id_comment);
 				$.ajax({
@@ -454,7 +461,7 @@ echo $row['text_jildar'];
 				var avtor4 = document.querySelector('.avtor4');
 				var avtor5 = document.querySelector('.avtor5');
 				var avtor6 = document.querySelector('.avtor6');
-				var avtor7 = document.querySelector('.avtor7');
+				
 				
 					avtor1.style.display = "none";
 					avtor2.style.display = "none";
@@ -462,7 +469,6 @@ echo $row['text_jildar'];
 					avtor4.style.display = "none";
 					avtor5.style.display = "none";
 					avtor6.style.display = "none";
-					avtor7.style.display = "none";
 			}
 			// Вызываем функцию при загрузке страницы
 			window.onload = function() {
@@ -478,7 +484,6 @@ echo $row['text_jildar'];
 				var avtor4 = document.querySelector('.avtor4');
 				var avtor5 = document.querySelector('.avtor5');
 				var avtor6 = document.querySelector('.avtor6');
-				var avtor7 = document.querySelector('.avtor7');
 				// Получаем значение поля ввода
 				var inputValue = avtor_san.value;
 				
@@ -490,7 +495,7 @@ echo $row['text_jildar'];
 					avtor4.style.display = "none";
 					avtor5.style.display = "none";
 					avtor6.style.display = "none";
-					avtor7.style.display = "none";
+					
 				}
 				// Сравниваем значение поля ввода с другим значением
 				if (inputValue === "2") {
@@ -501,7 +506,7 @@ echo $row['text_jildar'];
 					avtor4.style.display = "none";
 					avtor5.style.display = "none";
 					avtor6.style.display = "none";
-					avtor7.style.display = "none";
+					
 				}
 				if (inputValue === "3") {
 					hidingElem.style.display = "none";
@@ -521,7 +526,7 @@ echo $row['text_jildar'];
 					avtor4.style.display = "none";
 					avtor5.style.display = "none";
 					avtor6.style.display = "none";
-					avtor7.style.display = "none";
+					
 				}
 				if (inputValue === "5") {
 					hidingElem.style.display = "none";
@@ -531,7 +536,7 @@ echo $row['text_jildar'];
 					avtor4.style.display = "block";
 					avtor5.style.display = "none";
 					avtor6.style.display = "none";
-					avtor7.style.display = "none";
+					
 				}
 				if (inputValue === "6") {
 					hidingElem.style.display = "none";
@@ -541,7 +546,6 @@ echo $row['text_jildar'];
 					avtor4.style.display = "block";
 					avtor5.style.display = "block";
 					avtor6.style.display = "none";
-					avtor7.style.display = "none";
 				}
 				if (inputValue === "7") {
 					hidingElem.style.display = "none";
