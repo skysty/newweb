@@ -387,6 +387,15 @@ echo $row['text_jildar'];
 					$("#hideText").show();
 					$("#univ_avtor_san2").show();
 					$("#univ_avtor_san").hide();
+					$("#univ_avtor_san").prop('disabled', true);
+					$("#univ_avtor_san2").val('1');
+					$("#univ_avtor_san2").prop('disabled', false);
+					$("#avtor_bir").show();
+					$("#avtor_eki").show();
+					$("#avtor_ush").show();
+					$("#avtor_tort").show();
+					$("#avtor_bes").show();
+					$("#avtor_alty").show();
 				}
 				if (id_esep>=1&&id_esep<=5){
 					$("#hideText").hide();
@@ -395,7 +404,21 @@ echo $row['text_jildar'];
 					$("#univ_avtor_san").show();
 					$("#hidingElem").show();
 					$('.my-class').find(':input').val('');
-					$("#univ_avtor_san2").prop('disabled', true)
+					$("#univ_avtor_san2").prop('disabled', true);
+					$("#univ_avtor_san").prop('disabled', false);
+					$("#univ_avtor_san").val('1');
+					$("#avtor_bir").val('');
+					$("#avtor_bir").hide();
+					$("#avtor_eki").val('');
+					$("#avtor_eki").hide();
+					$("#avtor_ush").val('');
+					$("#avtor_ush").hide();
+					$("#avtor_tort").val('');
+					$("#avtor_tort").hide();
+					$("#avtor_bes").val('');
+					$("#avtor_bes").hide();
+					$("#avtor_alty").val('');avtor1
+					$("#avtor_alty").hide();			
 
 				}
 				$("#select_sany").val(id_esep);									
