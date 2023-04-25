@@ -2,7 +2,7 @@
 	$db_host = "localhost";
 	$db_user = "root";
 	$db_pass = "";
-	$db = "indikativ_2023";
+	$db = "indikativ_2022";
 	
 	$connection = mysqli_connect($db_host, $db_user, $db_pass);
     if (mysqli_connect_errno()) {

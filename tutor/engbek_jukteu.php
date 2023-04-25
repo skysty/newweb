@@ -207,7 +207,7 @@ echo $row['text_jildar'];
 						<textarea rows="8" cols="109" name = "tolyk_korset" id = "tolyk_korset" style = "font-size: 18px; font-family: Tahoma; margin-top: 8px; border-radius:4px;"></textarea><br /><br />
 						Орындалған күні
 						<input type = "date" name = "date" required placeholder = "жжжж-аа-кк енгізіңіз"/><br /><br />
-						ХҚТУ авторлар саны (Өзіңізді қоса санағанда) <span style="color:red" id="hideText">Макс 8 автор</span><br/>
+						ХҚТУ авторлар саны (Өзіңізді қоса санағанда) <span style="color:red" id="hideText">Макс 7 автор</span><br/>
 						<input type = "number" id = "univ_avtor_san" name = "univ_avtor_san" value = "1" min="1"/>
 						<input type = "number" id = "univ_avtor_san2" name = "univ_avtor_san2" value = "1" min="1"  oninput="compareSelectedValue()" required="Автор санын енгізіңіз"/>
 						<br /><br />
@@ -367,7 +367,6 @@ echo $row['text_jildar'];
 		$(document).ready(function(){
 			$("#hideText").hide();
 			$("#univ_avtor_san2").hide();
-			$("#univ_avtor_san2").prop('disabled', true)
 			$("#korsetkish").change(function(){
 				var kod_korsetkish = $("#korsetkish option:selected").text();
 				var id_esep =$("#korsetkish option:selected").attr('id_esep');
@@ -396,6 +395,7 @@ echo $row['text_jildar'];
 					$("#univ_avtor_san").show();
 					$("#hidingElem").show();
 					$('.my-class').find(':input').val('');
+					$("#univ_avtor_san2").prop('disabled', true)
 
 				}
 				$("#select_sany").val(id_esep);									
