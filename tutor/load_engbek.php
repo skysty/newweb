@@ -2,7 +2,7 @@
 	include('../incs/connect.php');
 	
 	if(isset($_POST['upload'])){
-		try {	
+		try	{	
 				$korsetkish = $_POST['korsetkish']??'';
 				$date = $_POST['date']??'';
 				$save_date = $_POST['save_date']??'';
@@ -24,43 +24,48 @@
 				$file_size = $_FILES['file']['size']??'';
 				$file_temp = $_FILES['file']['tmp_name']??'';
 				$id_esep = $_POST['id_esep']??'';
-			}catch (Exception $e) {
+			}
+			catch (Exception $e) {
 			// Handle the error
 				echo 'Error: ' . $e->getMessage();
 			}
 		if($univ_avtor_san2!=null && $id_esep=="6"){
-			if($file_size == FALSE)
-			{
-				echo "<span style = 'color: red;'>FAIL TYM ÜLKEN</span>";
-			}else 
-			{
+			function isFileSizeValid($fileSize, $korsetkish, $TutorID, $connection) {
+				if (!$fileSize) {
+					echo "<span style='color: red;'>FAIL TYM ÜLKEN</span>";
+					return false;
+				}
+			
 				$sql = "SELECT * FROM korsetkishter WHERE kod_korsetkish = '$korsetkish'";
-				$res = mysqli_query($connection,$sql) or die(mysqli_error($connection));
+				$res = mysqli_query($connection, $sql) or die(mysqli_error($connection));
 				$korset_massiv = mysqli_fetch_array($res);
-				
+			
 				$a = $korset_massiv['shekteu'];
-				echo $a."<br />";
-				
+				echo $a . "<br />";
+			
 				$sql2 = "SELECT COUNT(engbekter.kod_korset) AS wCount, engbekter.kod_kizm FROM engbekter WHERE kod_kizm = '$TutorID' AND kod_korset = '$korsetkish'";
-				$res2 = mysqli_query($connection,$sql2) or die(mysqli_error($connection));
+				$res2 = mysqli_query($connection, $sql2) or die(mysqli_error($connection));
 				$korset_massiv2 = mysqli_fetch_array($res2);
-				
+			
 				$b = $korset_massiv2['wCount'];
-				echo $b."<br />";
+				echo $b . "<br />";
+			
+				if ($b < $a) {
+					return true;
+				} else {
+					header('Location: error.php');
+					return false;
+				}
 			}
-			if($b < $a){
-
+			if (isFileSizeValid($file_size, $korsetkish, $TutorID, $connection)) {
 				$temp = explode(".", $file);
-				$newfilename = $TutorID."_".round(time()) . '.' . end($temp);
-				move_uploaded_file($file_temp, __DIR__ ."/../files/".$newfilename);
-				if($sani == null ||  $sani == 0 ) 
-				{
+				$newfilename = $TutorID . "_" . round(time()) . '.' . end($temp);
+				move_uploaded_file($file_temp, __DIR__ . "/../files/" . $newfilename);
+				if ($sani == null || $sani == 0) {
 					$sani = 1;
-				}				
-				$query = mysqli_query($connection,"INSERT INTO engbekter(kod_korset, kod_kizm, kod_okujil, kod_univer, kod_fakul, kod_kafedra, sani, kuni,  file_ati, rastalu, univ_avtor_san, ball, eskertu, kod_stat, artik, ball8, saktalgan_kuni) VALUES('$korsetkish','$TutorID','11','1','$FacultyID','$cafedraID','$sani','$date','../files/$newfilename','-','$univ_avtor_san','0','$eskertu','2','0','0','$save_date')") or die(mysqli_error($connection));
+				}
+				$query = mysqli_query($connection, "INSERT INTO engbekter(kod_korset, kod_kizm, kod_okujil, kod_univer, kod_fakul, kod_kafedra, sani, kuni,  file_ati, rastalu, univ_avtor_san, ball, eskertu, kod_stat, artik, ball8, saktalgan_kuni) VALUES('$korsetkish','$TutorID','11','1','$FacultyID','$cafedraID','$sani','$date','../files/$newfilename','-','$univ_avtor_san','0','$eskertu','2','0','0','$save_date')") or die(mysqli_error($connection));
 				header('Location: show_load_e.php');
-			} else {
-				header('Location: error.php');
 			}
 		}
 		if($file_size == FALSE){
