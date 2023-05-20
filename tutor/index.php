@@ -1,4 +1,4 @@
-<html>
+<!DOCTYPE html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <head>
 	<?php
@@ -12,81 +12,15 @@
 	?>
 	<title>Басты бет</title>
 	<link rel = "stylesheet" type = "text/css" href = "../css/style.css">
+	<link rel = "stylesheet" type = "text/css" href = "../css/tutorStyle.css">
+	<link rel = "stylesheet" type = "text/css" href = "../dataTables/jquery.dataTables.min.css">
 	<script type = "text/javascript" src = "../js/jquery.js"></script>
 	<script type = "text/javascript" src = "../js/functions.js"></script>
 	<script type = "text/javascript" src = "../chartjs/js/chart.min.js"></script>
 	<script type = "text/javascript" src = "../chartjs/js/jquery.min.js"></script>
 	<script type = "text/javascript" src = "../chartjs/js/app.js"></script>
+	<script type = "text/javascript" src = "../dataTables/jquery.dataTables.min.js"></script>
 	<link rel="icon" type="image/png" href="../img/favicon.png" />
-	<style>
-		.content_wrapper{
-			width: 1050px;
-			margin: 0 auto;
-		}
-		.tutors_table{
-			margin: 10px;
-			width: 500px;
-			float:left;
-		}
-		.univer_table{
-			margin: 10px;
-			width: 500px;
-			float:left;
-		}
-		.faculty_table{
-			margin: 10px;
-			width: 500px;
-			float:left;
-		}
-		.cafedra_table{
-			margin: 10px;
-			width: 500px;
-			float:left;
-		}
-		table {
-			border-collapse: collapse;
-			border:1px black solid;
-			width: 100%;
-			font-size: 12px;
-		}
-		a{
-			color: blue;
-			text-decoration:none;
-		}
-		a:hover{
-			color: red;
-			text-decoration:underline;
-		}
-
-		th, td {
-			text-align: left;
-			padding: 6px;
-			border:1px black solid;
-		}
-
-		tr:nth-child(even){background-color: #f2f2f2}
-
-		th {
-			background-color: #003366;
-			color: white;
-		}
-		#chart_container{
-			width: 900px;
-			padding: 50px;
-			height: 400px;
-			margin: 0 auto;
-			border: 2px #049eff solid;
-		}
-		#chart_container2{
-    			float: right;
-			width: 420px;
-			padding: 50px;
-			height: 400px;
-			margin: 0 auto;
-			border: 2px #049eff solid;
-		}
-
-	</style>
 </head>
 <body>
 	<div class = "upper_header">
@@ -96,69 +30,12 @@
 	</div><br />
 	<div class = "header">	
 	<div id = "menu_nav">
-		<nav id="primary_nav_wrap">
-			<ul>
-			  <li><a href="#">Негізгі</a>
-				<ul>
-				  <li><a href="index.php">Негізгі бет</a></li>
-                      		  <!--<li><a href="manu.php">Қосылған балл</a></li>-->				  
-				  <li><a href="korsetkishter.php">Көрсеткіштер</a></li>
-				  <li><a href="#">Құжаттар</a>
-				    <ul>                             
-					<li><a target = "_blank" href = "../files/ereje2022.pdf">Ереже 2021-2022</a></li>
-							<!-- <li><a target = "_blank" href = "../files/hat1.pdf">№1 хаттама 14.10.21</a></li>
-							<li><a target = "_blank" href = "../files/hat2.pdf">№2 хаттама 08.12.21</a></li> 
-							<li><a target = "_blank" href = "../files/sds.pdf">№2 хаттама 06.05.2021</a></li>
-							<li><a target = "_blank" href = "../files/hattama3.pdf">№3 хаттама 25.05.2021</a></li> 
-							<li><a target = "_blank" href = "../files/hattama4.pdf">№4 хаттама 24.06.2021</a></li>   -->
-							<li><a target = "_blank" href = "../files/rastau.pdf">Растаушылар Ғылыми бағыт</a></li>                                                                 
-							<li><a target = "_blank" href = "../files/akademia.PDF">Растаушылар Академиялық бағыт</a></li>                                                              
-							<li><a target = "_blank" href = "../files/aleumettik.pdf">Әлеуметтік-мәдени - Растаушылар</a></li>
-							<li><a target = "_blank" href = "../files/okim.PDF">ӨКІМ  Халықаралық байланыс</a></li>   
-							<li><a target = "_blank" href = "../files/уткырлык.pdf">Растаушылар академиялық ұтқырлық</a></li>               
-                    </ul>
-				  </li>
-				   <li><a href="#">Архив</a>
-				   		<ul>				     
-						   <li><a href="http://ip4.ayu.edu.kz">2020-2021 оқу жылы</a></li>
-				       </ul>
-			           </li>
-                       <li><a href="change_password.php">Құпия сөзді ауыстыру</a></li>
-				</ul>
-			  </li>
-			  
-			  <li><a href="#">Орындау</a>
-				<ul>
-				  <li><a href="engbek_jukteu.php">ОПҚ/ҒҚ</a></li>
-				</ul>
-			  </li>
-			  <li><a href="#">Басқа</a>
-				<ul>
-				  <li><a href="baska_okitushyny_koru.php">ОПҚ/ҒҚ</a></li>
-				</ul>
-			  </li>			  
-			  <li><a href="#">Сенім жәшігі</a>
-				<ul>
-				  <li><a href="shagym_tusiru.php">Шағым түсіру</a></li>
-				  <li><a href="shagymdar.php">Шағымдарды көру</a></li>
-				</ul>
-			  </li>
-			  <li><a href="../logout.php">Шығу</a></li>
-			</ul>
-		</nav>
+		<?php include '../extensions/nav.php'; ?>
 	</div>
 	</div>
 	<div class = "content">
 		<div class = "content_wrapper" style = "margin-top: 5px;">					
 			<?php
-			/*	
-				if(isset($_SESSION['tutor'])){
-				
-				} else {
-				
-					header('Location: ../login.php');
-				}
-			*/
 				$_SESSION['tutor'];
 				$query = mysqli_query($connection,"SELECT * FROM tutors WHERE Login = '$_SESSION[tutor]'") or die(mysqli_error($connection));
 				$tut = mysqli_fetch_array($query);
@@ -166,7 +43,7 @@
 				echo "<h2 style = 'color:#0094aa'>Оқытушы: " . $tut['lastname'] ." ". $tut['firstname'] ." ". $tut['patronymic'] . "</h2>";
 				?>
 			<hr />		
-			<h1 style = "text-align: center; color: red">Ағымдағы рейтинг 2021-2022</h1><hr />
+			<h1 style = "text-align: center; color: red">Ағымдағы рейтинг 2022-2023</h1><hr />
 			<h2 align = 'center' style = "color: #0094de">Факультеттер рейтингі</h2>
 			<div id = "chart_container">
 				<canvas id = "mycanvas"></canvas>
@@ -174,44 +51,61 @@
 			<div class = 'tutors_table'>
 				<h3 align = 'center' style = "color: #0094de">Оқытушы-профессорлар және ғылыми қызметкерлер рейтингі</h3>
 				<?php
-					$sql1 = mysqli_query($connection,"SELECT T1.*, (T1.typ1 + T1.typ2 + T1.typ3+ T1.typ4) AS sum_val
-					FROM (SELECT
-						  tutors.TutorID,
-						  tutors.RATE, 
-						  tutors.job_titleID,
-						  tutors.lastname, 
-						  engbekter.kod_kizm,
-						  tutors.firstname,
-					  SUM(CASE WHEN korsetkishter.typeID = 1 THEN engbekter.ball ELSE 0 END) * 0.50 AS typ1,
-					  SUM(CASE WHEN korsetkishter.typeID = 2 THEN engbekter.ball ELSE 0 END) * 0.35 AS typ2,
-					  SUM(CASE WHEN korsetkishter.typeID = 3 THEN engbekter.ball ELSE 0 END) * 0.15 AS typ3,
-					  SUM(CASE WHEN korsetkishter.typeID = 5 THEN engbekter.ball ELSE 0 END)  AS typ4
+					$sql1 = mysqli_query($connection,"SELECT 
+					T1.TutorID,
+					T1.job_titleID,
+					T1.lastname,
+					T1.firstname,
+					SUM(T1.typ1) AS sum_typ1,
+					SUM(T1.typ2) AS sum_typ2,
+					SUM(T1.typ3) AS sum_typ3,
+					SUM(T1.typ4) AS sum_typ4,
+					(SUM(T1.typ1) + SUM(T1.typ2) + SUM(T1.typ3) + SUM(T1.typ4)) AS sum_val
+				FROM (
+					SELECT
+						tutors.TutorID,
+						tutors.RATE, 
+						tutors.job_titleID,
+						tutors.lastname, 
+						engbekter.kod_kizm,
+						tutors.firstname,
+						CASE WHEN korsetkishter.typeID = 1 THEN engbekter.ball ELSE 0 END * 0.50 AS typ1,
+						CASE WHEN korsetkishter.typeID = 2 THEN engbekter.ball ELSE 0 END * 0.35 AS typ2,
+						CASE WHEN korsetkishter.typeID = 3 THEN engbekter.ball ELSE 0 END * 0.15 AS typ3,
+						CASE WHEN korsetkishter.typeID = 5 THEN engbekter.ball ELSE 0 END AS typ4
 					FROM engbekter
-					Left JOIN tutors ON tutors.TutorID = engbekter.kod_kizm
+					LEFT JOIN tutors ON tutors.TutorID = engbekter.kod_kizm
 					LEFT JOIN korsetkishter ON korsetkishter.kod_korsetkish = engbekter.kod_korset
-					WHERE tutors.deleted=0 AND tutors.RATE IN(1,2,3)
-					GROUP BY tutors.lastname, tutors.firstname) AS T1 ORDER by sum_val DESC") or die(mysqli_error($connection));
-					
-					$sql_tuts = mysqli_query($connection,"SELECT 
-					tutors.RATE,
-					 tutors.job_titleID, 
-					 tutors.lastname, 
-					 tutors.TutorID, 
-					 engbekter.kod_kizm, 
-					 tutors.firstname, 
-					 SUM(engbekter.ball) AS sum_val FROM engbekter 
+					WHERE tutors.deleted=0 AND tutors.RATE IN (1,2,3)
+					UNION ALL
+					SELECT 
+						tutors.TutorID,
+						tutors.RATE,
+						tutors.job_titleID, 
+						tutors.lastname, 
+						engbekter.kod_kizm, 
+						tutors.firstname, 
+						0 AS typ1,
+						0 AS typ2,
+						0 AS typ3,
+						engbekter.ball AS typ4
+					FROM engbekter 
 					RIGHT JOIN tutors ON tutors.TutorID = engbekter.kod_kizm
-					WHERE tutors.deleted=0 AND tutors.RATE IN(1,2,3) AND engbekter.kod_kizm IS NULL
-					GROUP BY tutors.lastname, tutors.firstname ORDER BY sum_val DESC") or die(mysqli_error($connection));
-
+					WHERE tutors.deleted=0 AND tutors.RATE IN (1,2,3) AND engbekter.kod_kizm IS NULL
+				) AS T1
+				GROUP BY T1.lastname, T1.firstname
+				ORDER BY sum_val DESC") or die(mysqli_error($connection));
 					?>
-					<table>
-						<tr>
-							<th>№</th>
-							<th>Аты жөні</th>
-							<th>Жалпы балл</th>
-							<th>Толық көру</th>
-						</tr>
+					<table id="tutorTable" class="display" style="witdth:100%">
+						<thead>
+							<tr>
+								<th>№</th>
+								<th>Аты жөні</th>
+								<th>Жалпы балл</th>
+								<th>Толық көру</th>
+							</tr>
+						</thead>
+						<tbody>
 				<?php
 
 					$i = 0;
@@ -219,25 +113,16 @@
 					while($tutor = mysqli_fetch_array($sql1)){
 						$i++;
 						$sum_val = sprintf("%.2f", $tutor['sum_val']);
-						echo "
-							<tr>
-								<td>".$i."</td>
-								<td>".$tutor['lastname']." ".$tutor['firstname']."</td>
-								<td>" . $sum_val . "</td>
-								<td><a href = \"tolyk.php?ID=" . $tutor['TutorID'] . "\">Толық >></a></td>
-							</tr>";
+						echo "<tr>";
+						echo "<td>".$i."</td>";
+						echo "<td>".$tutor['lastname']." ".$tutor['firstname']."</td>";
+						echo "<td>" . $sum_val . "</td>";
+						echo "<td><a href = \"tolyk.php?ID=" . $tutor['TutorID'] . "\">Толық >></a></td>";
+						echo "</tr>";
 					}
-					while($tutor2 = mysqli_fetch_array($sql_tuts)){
-						$i++;
-						$sum_val = sprintf("%.2f", $tutor2['sum_val']);
-						echo "<tr><td>".$i."</td><td>".$tutor2['lastname']." ".$tutor2['firstname']."</td><td>" . $sum_val . "</td><td><a href = \"tolyk.php?ID=" . $tutor2['TutorID'] . "\">Толық >></a></td></tr>";
-					}
-						/*
-						if($tutor['RATE'] == 0.5 || $tutor['RATE'] == 0.25 || $tutor['RATE'] == 0.75 || $tutor['job_titleID'] == 2 || $tutor['job_titleID'] == 3 || $tutor['job_titleID'] == 4 || $tutor['job_titleID'] == 5 || $tutor['job_titleID'] == 6 || $tutor['job_titleID'] == 7 || $tutor['job_titleID'] == 8){
-							$sum_val = sprintf("%.2f", $tutor['sum_val']);
-							echo "<tr><td>".'*'."</td><td>".$tutor['lastname']." ".$tutor['firstname']."</td><td>" . $sum_val . "</td><td><a href = \"tolyk.php?ID=" . $tutor['TutorID'] . "\">Толық >></a></td></tr>";							
-						}	*/
-			?>
+					
+				?>
+					</tbody>
 					</table>
 					</div>
 					<div class = "univer_table">
